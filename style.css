@@ -1,0 +1,279 @@
+:root {
+  --background: #0b0e0f;
+  --line: #2d3434;
+  --text: #e9e7df;
+  --muted: #929998;
+  --accent: #d2ae62;
+  --maxWidth: 800px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.siteHeader,
+main {
+  width: min(var(--maxWidth), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.siteHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  color: var(--accent);
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.pageNav {
+  display: flex;
+  gap: 22px;
+}
+
+.pageLink {
+  color: var(--muted);
+  font-family: monospace;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.pageLink:hover,
+.pageLink.active {
+  color: var(--text);
+}
+
+main {
+  padding: 24px 0 64px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+h1, h2, p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 620px;
+  margin-bottom: 16px;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.toolCard {
+  padding: 56px 0;
+  border-top: 1px solid var(--line);
+}
+
+.toolCard:first-child {
+  border-top: 0;
+  padding-top: 48px;
+}
+
+.formRow {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.passwordOptions {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.passwordOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.passwordOption input {
+  width: auto;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--background);
+  color: var(--text);
+  font: inherit;
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+button:disabled,
+input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.result {
+  min-height: 48px;
+  margin-top: 18px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.result p {
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.result:hover p {
+  color: var(--accent);
+}
+
+#passwordResult,
+#passwordResult p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.explanation {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.siteFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: min(var(--maxWidth), calc(100% - 40px));
+  margin: 0 auto;
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.contactLinks {
+  display: flex;
+  gap: 16px;
+}
+
+.contactLinks a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contactLinks a:hover {
+  text-decoration: underline;
+}
+
+#qrImage {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+}
+
+.qrFrame {
+  display: none;
+  width: fit-content;
+  max-width: 200px;
+  margin-top: 16px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+}
+
+@media (max-width: 600px) {
+  .siteHeader,
+  main,
+  .siteFooter {
+    width: min(100% - 28px, var(--maxWidth));
+  }
+
+  .siteHeader {
+    padding: 20px 0;
+  }
+
+  main {
+    padding-top: 32px;
+  }
+
+  .toolCard {
+    padding: 40px 0;
+  }
+
+  .siteFooter {
+    display: block;
+  }
+
+  .contactLinks {
+    margin-top: 12px;
+  }
+}

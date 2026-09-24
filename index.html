@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Arko's Toolbox</title>
+</head>
+<body>
+    <header class="siteHeader">
+        <a class="logo" href="https://arko.work">arko.work</a>
+        <nav class="pageNav" aria-label="Tool pages">
+            <a class="pageLink active" href="/" data-route="/minecraft">minecraft</a>
+            <a class="pageLink" href="/extra" data-route="/extra">extra tools</a>
+        </nav>
+    </header>
+
+    <main class="toolShell">
+
+        <div id="minecraftPage" class="page active">
+            <!-- Minecraft tools page -->
+            <section class="toolCard">
+                <h1>Arko's Toolbox</h1>
+                <h2>I just build whatever here.</h2>
+            </section>
+
+            <!-- Coordinate converter -->
+            <section class="toolCard">
+                <h3>Coordinate Converter</h3>
+                <div class="formRow">
+                    <select id="dimensionSelect" defaultValue="Nether">
+                        <option value="Nether">Overworld to Nether</option>
+                        <option value="Overworld">Nether to Overworld</option>
+                    </select>
+                    <input type="text" id="coordsInputField" placeholder="Type your coords here (Order is: x, y, z)">
+                    <button id="submitButton" onclick="submitCoords()">Submit</button>
+                </div>
+
+                <p class="result" id="result1_1"></p>
+                <p class="result" id="result1_2"></p>
+                <p class="explanation">The reason I made it this specific way is so I can click F3+C in Minecraft, copy the coordinates, and paste them here without having to edit them. And then I can copy and paste the output easily into the waypoint menu on Xaero's worldmap or just in a command.</p>
+            </section>
+
+            <!-- Item count to stack converter -->
+            <section class="toolCard">
+                <h3>Itemcount to Stack Converter</h3>
+                <div class="formRow">
+                    <select id="stackSizeSelect">
+                        <option value="64">Stack Size: 64</option>
+                        <option value="16">Stack Size: 16</option>
+                    </select>
+                    <input type="text" id="itemCountInput" placeholder="Enter item count">
+                    <button id="itemSubmitButton" onclick="submitItemCount()">Convert</button>
+                </div>
+                <p class="result" id="result3"></p>
+                <p class="explanation">Might use this like once.</p>
+            </section>
+        </div>
+
+        <div id="extraPage" class="page">
+            <!-- Extra tools page -->
+            <section class="toolCard">
+                <h1>Arko's Toolbox</h1>
+                <h2>I just build whatever here.</h2>
+            </section>
+
+            <!-- RGB/Hex converter -->
+            <section class="toolCard">
+                <h3>RGB/Hex Converter</h3>
+                <div class="formRow">
+                    <select id="colorFormatSelect" onchange="updateRgbHexInputField()">
+                        <option value="" selected>Choose one</option>
+                        <option value="Hex">RGB to Hex</option>
+                        <option value="RGB">Hex to RGB</option>
+                    </select>
+                    <input type="text" id="colorValuesInputField" placeholder="Choose a type first" disabled>
+                    <button id="colorSubmitButton" onclick="submitColorValues()" disabled>Submit</button>
+                </div>
+
+                <p class="result" id="result2"></p>
+                <p class="explanation">Barely ever use this, but it's nice to have.</p>
+            </section>
+
+            <!-- QR code generator -->
+            <section class="toolCard">
+                <h3>QR Code Generator</h3>
+                <div class="formRow">
+                    <input type="text" placeholder="Text or URL">
+                    <button id="qrSubmit">Submit</button>
+                    <div id="qrFrame" class="qrFrame">
+                        <img id="qrImage" src="assets/qr.png" alt="QR code">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Password generator -->
+            <section class="toolCard">
+                <h3>Password Generator</h3>
+                <p class="explanation">Choose the character types to include, then generate a secure password.</p>
+                <div class="passwordOptions" aria-label="Password character types">
+                    <label class="passwordOption">
+                        <input type="checkbox" id="lowercaseOption">
+                        Lowercase letters
+                    </label>
+                    <label class="passwordOption">
+                        <input type="checkbox" id="uppercaseOption">
+                        Uppercase letters
+                    </label>
+                    <label class="passwordOption">
+                        <input type="checkbox" id="numbersOption">
+                        Numbers
+                    </label>
+                    <label class="passwordOption">
+                        <input type="checkbox" id="specialCharactersOption">
+                        Special characters
+                    </label>
+                </div>
+                <div class="formRow">
+                    <input type="number" id="passwordLengthInput" min="1" max="100" value="12" placeholder="Password length">
+                    <button id="passwordGenerateButton">Generate Password</button>
+                </div>
+                <p class="result" id="passwordResult"></p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="siteFooter">
+        <span>&copy; 2026 arko.work</span>
+        <span class="contactLinks">
+            <a href="https://discord.com/users/1132641206506102916" target="_blank" rel="noopener noreferrer">Discord: lccos</a>
+            <a href="https://nmc.is/arkoslocos" target="_blank" rel="noopener noreferrer">NameMC</a>
+        </span>
+    </footer>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
