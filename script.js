@@ -112,8 +112,8 @@ function coordsConverter(coordinates, dimension) {
         
     const numbersLength = numbers.length;
 
-    if (numbersLength > 5) return alert(`Error. Found ${numbersLength} coordinates. Input max 5 (only X & Z are needed, Y and Yaw and Pitch is optional).`)
-    if (numbersLength === 4) return alert('Error. Found 4 coordinates. How are you getting 4? (only X & Z are needed, Y and Yaw and Pitch is optional).') 
+    if (numbersLength > 5) return alert(`Error. Found ${numbersLength} coordinates. Input max 5 (only X & Z are needed, Y and Yaw and Pitch are optional).`)
+    if (numbersLength === 4) return alert('Error. Found 4 coordinates. How are you getting 4? (only X & Z are needed, Y and Yaw and Pitch are optional).') 
     if (numbersLength < 2) return alert(`Error. Found ${pluralize(numbersLength, "coordinate")}. At least X & Z are needed.`)
 
     const x = Number(numbers[0]);
