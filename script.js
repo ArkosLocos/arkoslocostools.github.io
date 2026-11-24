@@ -149,29 +149,52 @@ function coordsConverter(coordinates, dimension) {
 
 function submitItemCount() {
     const inputField = document.getElementById("itemCountInput");
+    const shulkersOn = document.getElementById("shulkerToggle")
     const stackSizeSelect = document.getElementById("stackSizeSelect");
-    const result = itemCountConverter(inputField.value, stackSizeSelect.value);
+    
+    const result = itemCountConverter(
+        inputField.value, 
+        stackSizeSelect.value, 
+        shulkersOn.checked
+    );
+    if (!result) return;
     copyToClipboard(result, "result3");
 }
 
-function itemCountConverter(itemCount, stackSize) {
+function itemCountConverter(itemCount, stackSize, shulkersOn) {
     const count = Number(itemCount);
     const stack = Number(stackSize);
 
     if (isNaN(count)) return alert("Error. Please provide a valid number.");
-    if (count < 0) return alert("Error. Please provide a positive number.");
+    if (count <= 0) return alert("Error. Please provide a positive number.");
+    
+    const stacks = Math.floor(count / stack);
+    const remainingItems = count % stack;
 
-    const fullStacks = Math.floor(count / stack);
-    const remainder = count % stack;
+    const texts = [
+        {value: remainingItems, text: itemText = pluralize(remainingItems, "item")}
+    ]
+    
+    if (shulkersOn) {
+        const shulkers = Math.floor(stacks / 27)
+        const remainingStacks = stacks % 27
+        texts.unshift(
+            {value: shulkers, text: pluralize(shulkers, "shulker")}, 
+            {value: remainingStacks, text: `${pluralize(remainingStacks, "stack")} of ${stack}`}
+        )
+    } else {
+        texts.unshift({value: stacks, text: `${pluralize(stacks, "stack")} of ${stack}`})
+    }
+        
+    const filteredTexts = texts
+    .filter(({ value }) => value > 0)
+    .map(({ value, text }) => `${value} ${text}`);
 
-    const stackText = `${pluralize(fullStacks, "stack")} of ${stack}`;
-    const itemText = pluralize(remainder, "item");
-
-    return remainder === 0
-        ? stackText
-        : fullStacks === 0
-            ? itemText
-            : `${stackText} and ${itemText}`;
+    return filteredTexts.length === 2 ?
+        filteredTexts.join(" and ") :
+        filteredTexts.length === 1 ?
+        filteredTexts[0] :
+        `${filteredTexts[0]}, ${filteredTexts[1]} and ${filteredTexts[2]}`
 }
 
 
