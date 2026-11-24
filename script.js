@@ -88,8 +88,8 @@ function pluralize(amount, singular) {
 // Coords converter
 
 const worldBorderLimit = 29999984;
-const inputBorderMessage = "Error. Input must not be bigger than 29,999,984.";
-const outputBorderMessage = "Lowered the converted coordinate to the max of 29,999,984, because it would have gone past the world border.";
+const inputBorderMessage = "Error. Input must not be bigger than 29999984.";
+const outputBorderMessage = "Lowered the converted coordinate to the max of 29999984, because it would have gone past the world border.";
 
 function submitCoords() {
     const inputField = document.getElementById("coordsInputField");
