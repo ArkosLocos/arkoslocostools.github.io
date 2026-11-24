@@ -188,7 +188,7 @@ function itemCountConverter(itemCount, stackSize, shulkersOn) {
         
     const filteredTexts = texts
     .filter(({ value }) => value > 0)
-    .map(({ value, text }) => `${value} ${text}`);
+    .map(({ value, text }) => text);
 
     return filteredTexts.length === 2 ?
         filteredTexts.join(" and ") :
