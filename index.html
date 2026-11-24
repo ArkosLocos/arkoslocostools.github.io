@@ -45,10 +45,13 @@
             <section class="toolCard">
                 <h3>Itemcount to Stack Converter</h3>
                 <div class="formRow">
+                    <label class="Toggle">
+                      <input type="checkbox">
+                      <span class="slider"></span>
+                    </label>
                     <select id="stackSizeSelect">
                         <option value="64">Stack Size: 64</option>
                         <option value="16">Stack Size: 16</option>
-                        <option value="shulker">Shulker Boxes</option>
                     </select>
                     <input type="text" id="itemCountInput" placeholder="Enter item count">
                     <button id="itemSubmitButton" onclick="submitItemCount()">Convert</button>
